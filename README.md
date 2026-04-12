@@ -89,7 +89,7 @@ VITE_API_URL=http://localhost:5000
 
 **server/.env:**
 ```
-MONGO_URI=mongodb+srv://yashcs23228_db_user:XgacweEsOUZj83jU@cluster0.gfp1q8y.mongodb.net/portfolio
+
 PORT=5000
 FRONTEND_URL=http://localhost:5173
 ```
