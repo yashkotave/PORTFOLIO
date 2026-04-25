@@ -2,12 +2,16 @@ import { motion } from 'framer-motion'
 import { FiArrowDown } from 'react-icons/fi'
 import { FaGithub, FaLinkedin, FaTwitter, FaInstagram } from 'react-icons/fa'
 import { personalInfo } from '../config/data'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import gsap from 'gsap'
 
 export default function Hero() {
   const [displayedText, setDisplayedText] = useState('')
   const fullText = "Full Stack Developer"
-  
+  const bgRef = useRef(null)
+  const secondBgRef = useRef(null)
+
+  // Enhanced typing effect with better pacing
   useEffect(() => {
     let index = 0
     const interval = setInterval(() => {
@@ -15,85 +19,153 @@ export default function Hero() {
         setDisplayedText(fullText.substring(0, index + 1))
         index++
       }
-    }, 50)
+    }, 80)
     return () => clearInterval(interval)
   }, [])
 
+  // Enhanced parallax effect on mouse move
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      if (!bgRef.current || !secondBgRef.current) return
+      const x = (e.clientX / window.innerWidth) * 30
+      const y = (e.clientY / window.innerHeight) * 30
+
+      gsap.to(bgRef.current, {
+        x: x * 0.5,
+        y: y * 0.5,
+        duration: 0.8,
+        ease: 'power1.out'
+      })
+
+      gsap.to(secondBgRef.current, {
+        x: x,
+        y: y,
+        duration: 0.8,
+        ease: 'power1.out'
+      })
+    }
+
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [])
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2, delayChildren: 0.3 }
+    }
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } }
+  }
+
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-      <div className="absolute w-96 h-96 bg-[#6366f1]/10 rounded-full blur-3xl -z-10 top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
-      
-      <div className="max-w-4xl mx-auto text-center px-6 py-12">
+      {/* Enhanced gradient backgrounds */}
+      <div
+        ref={bgRef}
+        className="absolute w-80 h-80 bg-gradient-to-tr from-[#6366f1]/15 to-[#a855f7]/15 rounded-full blur-3xl -z-10 top-1/4 left-1/2 -translate-x-1/2"
+      ></div>
+
+      <div
+        ref={secondBgRef}
+        className="absolute w-72 h-72 bg-gradient-to-br from-[#0ea5e9]/15 to-[#6366f1]/15 rounded-full blur-3xl -z-10 top-1/2 right-0"
+      ></div>
+
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="max-w-4xl mx-auto text-center px-4 sm:px-6 py-12"
+      >
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-5xl md:text-7xl font-bold text-[#f1f5f9] mb-6"
+          variants={itemVariants}
+          className="text-4xl sm:text-5xl md:text-7xl font-bold text-[#f1f5f9] mb-6 tracking-tight"
         >
           {displayedText}
-          <span className="animate-pulse">|</span>
+          <motion.span
+            animate={{ opacity: [1, 0] }}
+            transition={{ duration: 0.7, repeat: Infinity }}
+            className="text-[#6366f1]"
+          >
+            |
+          </motion.span>
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.6 }}
-          className="text-xl md:text-2xl text-[#6366f1] mb-8"
+          variants={itemVariants}
+          className="text-lg sm:text-xl md:text-2xl bg-gradient-to-r from-[#6366f1] to-[#a855f7] bg-clip-text text-transparent mb-4 font-semibold"
         >
           {personalInfo.name}
         </motion.p>
 
         <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-          className="text-lg text-[#94a3b8] max-w-2xl mx-auto mb-12 leading-relaxed"
+          variants={itemVariants}
+          className="text-base sm:text-lg md:text-lg text-[#94a3b8] max-w-2xl mx-auto mb-12 leading-relaxed"
         >
           {personalInfo.tagline}
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.7, duration: 0.6 }}
-          className="flex gap-4 justify-center mb-12 flex-wrap"
+          variants={itemVariants}
+          className="flex gap-3 sm:gap-4 justify-center mb-12 flex-wrap"
         >
-          <button className="px-6 py-3 bg-[#6366f1] hover:bg-[#818cf8] text-white font-medium rounded-lg transition-all duration-200">
+          <motion.button
+            whileHover={{ scale: 1.05, boxShadow: '0 20px 50px rgba(99, 102, 241, 0.4)' }}
+            whileTap={{ scale: 0.95 }}
+            className="px-6 sm:px-8 py-3 bg-gradient-to-r from-[#6366f1] to-[#7c3aed] hover:from-[#818cf8] hover:to-[#a78bfa] text-white font-semibold rounded-lg transition-all duration-200 shadow-lg"
+          >
             View My Work
-          </button>
-          <button className="px-6 py-3 border border-[rgba(255,255,255,0.12)] hover:border-[#6366f1]/50 text-[#f1f5f9] rounded-lg transition-all duration-200">
+          </motion.button>
+          <motion.button
+            whileHover={{
+              scale: 1.05,
+              boxShadow: '0 0 30px rgba(99, 102, 241, 0.3)'
+            }}
+            whileTap={{ scale: 0.95 }}
+            className="px-6 sm:px-8 py-3 border-2 border-[#6366f1]/50 hover:border-[#6366f1] text-[#f1f5f9] font-semibold rounded-lg transition-all duration-200"
+          >
             Download CV
-          </button>
+          </motion.button>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.9, duration: 0.6 }}
-          className="flex gap-6 justify-center text-2xl text-[#94a3b8]"
+          variants={itemVariants}
+          className="flex gap-6 justify-center text-2xl sm:text-3xl text-[#94a3b8]"
         >
-          <a href={personalInfo.socials.github} target="_blank" className="hover:text-[#6366f1] transition">
-            <FaGithub />
-          </a>
-          <a href={personalInfo.socials.linkedin} target="_blank" className="hover:text-[#6366f1] transition">
-            <FaLinkedin />
-          </a>
-          <a href={personalInfo.socials.twitter} target="_blank" className="hover:text-[#6366f1] transition">
-            <FaTwitter />
-          </a>
-          <a href={personalInfo.socials.instagram} target="_blank" className="hover:text-[#6366f1] transition">
-            <FaInstagram />
-          </a>
+          {[personalInfo.socials.github, personalInfo.socials.linkedin, personalInfo.socials.twitter, personalInfo.socials.instagram].map((url, idx) => (
+            <motion.a
+              key={idx}
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{
+                scale: 1.25,
+                color: '#6366f1',
+                textShadow: '0 0 8px rgba(99, 102, 241, 0.5)'
+              }}
+              whileTap={{ scale: 0.85 }}
+              className="hover:text-[#6366f1] transition-colors duration-200"
+            >
+              {idx === 0 && <FaGithub />}
+              {idx === 1 && <FaLinkedin />}
+              {idx === 2 && <FaTwitter />}
+              {idx === 3 && <FaInstagram />}
+            </motion.a>
+          ))}
         </motion.div>
 
         <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
+          animate={{ y: [0, 12, 0] }}
+          transition={{ duration: 2.5, repeat: Infinity }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[#6366f1]"
         >
           <FiArrowDown size={24} />
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   )
 }

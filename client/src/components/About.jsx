@@ -1,62 +1,196 @@
 import { motion } from 'framer-motion'
 import { personalInfo } from '../config/data'
+import { useEffect, useRef } from 'react'
+import gsap from 'gsap'
 
 export default function About() {
   const stats = [
-    { label: 'Projects', value: '7+' },
-    { label: 'Experience', value: '90 Days' },
-    { label: 'Technologies', value: '15+' },
-    { label: 'Satisfied', value: '100%' }
+    { label: 'Projects', value: 7, suffix: '+' },
+    { label: 'Experience', value: 90, suffix: ' Days' },
+    { label: 'Technologies', value: 15, suffix: '+' },
+    { label: 'Happy Clients', value: 100, suffix: '%' }
   ]
 
-  return (
-    <section id="about" className="py-20 px-6 max-w-6xl mx-auto">
-      <h2 className="text-4xl font-bold text-[#f1f5f9] mb-16 text-center">About Me</h2>
+  const statRefs = useRef([])
 
-      <div className="grid md:grid-cols-2 gap-12 items-center">
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const index = statRefs.current.indexOf(entry.target)
+          if (index !== -1) {
+            const stat = stats[index]
+            animateCounter(entry.target.querySelector('[data-counter]'), stat.value)
+          }
+        }
+      })
+    }, { threshold: 0.5 })
+
+    statRefs.current.forEach(ref => {
+      if (ref) observer.observe(ref)
+    })
+
+    return () => observer.disconnect()
+  }, [])
+
+  const animateCounter = (element, targetValue) => {
+    if (!element) return
+    let current = 0
+    const increment = targetValue / 30
+    const interval = setInterval(() => {
+      current += increment
+      if (current >= targetValue) {
+        element.textContent = Math.floor(targetValue)
+        clearInterval(interval)
+      } else {
+        element.textContent = Math.floor(current)
+      }
+    }, 30)
+  }
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1, delayChildren: 0.2 }
+    }
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.6 } }
+  }
+
+  return (
+    <section id="about" className="py-20 px-4 sm:px-6 max-w-6xl mx-auto">
+      <motion.h2
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="text-4xl sm:text-5xl font-bold text-[#f1f5f9] mb-4 text-center"
+      >
+        About Me
+      </motion.h2>
+      <motion.div
+        initial={{ scaleX: 0 }}
+        whileInView={{ scaleX: 1 }}
+        transition={{ delay: 0.2, duration: 0.6 }}
+        viewport={{ once: true }}
+        className="h-1 w-20 bg-gradient-to-r from-[#6366f1] to-[#a855f7] rounded-full mx-auto mb-16"
+      ></motion.div>
+
+      <div className="grid md:grid-cols-2 gap-8 lg:gap-16 items-center">
+        {/* Left Side - Profile Image & Stats */}
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
+          initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
           className="flex flex-col gap-8"
         >
-          <div className="w-48 h-48 bg-[#6366f1]/20 rounded-lg flex items-center justify-center border border-[#6366f1]/30">
-            <div className="text-6xl font-bold text-[#6366f1]">YK</div>
-          </div>
+          <motion.div
+            whileHover={{ y: -10 }}
+            transition={{ duration: 0.3 }}
+            className="relative"
+          >
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+              className="absolute inset-0 bg-gradient-to-r from-[#6366f1] to-[#a855f7] rounded-2xl opacity-0 group-hover:opacity-100 blur-xl"
+            ></motion.div>
+            <div className="relative w-56 h-56 bg-gradient-to-br from-[#111117] to-[#0a0a0f] rounded-2xl flex items-center justify-center border border-[rgba(99,102,241,0.2)] hover:border-[#6366f1]/60 transition-all duration-300 shadow-lg">
+              <motion.div
+                animate={{ y: [0, -12, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                className="text-center"
+              >
+                <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-br from-[#6366f1] to-[#a855f7] bg-clip-text text-transparent">
+                  YASH
+                </div>
+                <div className="text-2xl sm:text-3xl font-bold bg-gradient-to-br from-[#a855f7] to-[#0ea5e9] bg-clip-text text-transparent">
+                  KOTAVE
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-2 gap-4"
+          >
             {stats.map((stat, i) => (
-              <div key={i} className="bg-[#111117] border border-[rgba(255,255,255,0.07)] rounded-xl p-6 hover:border-[#6366f1]/30 transition-all duration-300">
-                <div className="text-3xl font-bold text-[#6366f1]">{stat.value}</div>
-                <div className="text-[#94a3b8] text-sm">{stat.label}</div>
-              </div>
+              <motion.div
+                key={i}
+                ref={el => statRefs.current[i] = el}
+                variants={itemVariants}
+                className="bg-gradient-to-br from-[#111117] to-[#0a0a0f] border border-[rgba(99,102,241,0.1)] hover:border-[#6366f1]/50 rounded-xl p-4 sm:p-6 hover:shadow-lg hover:shadow-[#6366f1]/10 transition-all duration-300 group cursor-default"
+              >
+                <div className="text-3xl sm:text-4xl font-bold text-transparent bg-gradient-to-r from-[#6366f1] to-[#a855f7] bg-clip-text group-hover:from-[#818cf8] group-hover:to-[#d084f8] transition-all duration-300">
+                  <span data-counter>0</span>{stat.suffix}
+                </div>
+                <div className="text-[#94a3b8] text-xs sm:text-sm font-medium mt-1">{stat.label}</div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </motion.div>
 
+        {/* Right Side - About Text */}
         <motion.div
-          initial={{ opacity: 0, x: 20 }}
+          initial={{ opacity: 0, x: 40 }}
           whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
           className="space-y-6"
         >
-          <p className="text-[#94a3b8] leading-relaxed">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-[#94a3b8] leading-relaxed text-sm sm:text-base"
+          >
             {personalInfo.summary}
-          </p>
+          </motion.p>
 
-          <div>
-            <h3 className="text-xl font-semibold text-[#f1f5f9] mb-4">Location</h3>
-            <p className="text-[#94a3b8]">{personalInfo.location}</p>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            viewport={{ once: true }}
+            className="space-y-2"
+          >
+            <h3 className="text-lg font-semibold text-[#f1f5f9]">📍 Location</h3>
+            <p className="text-[#94a3b8] text-sm sm:text-base">{personalInfo.location}</p>
+          </motion.div>
 
-          <div>
-            <h3 className="text-xl font-semibold text-[#f1f5f9] mb-4">Contact</h3>
-            <p className="text-[#94a3b8]">{personalInfo.email}</p>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            viewport={{ once: true }}
+            className="space-y-2"
+          >
+            <h3 className="text-lg font-semibold text-[#f1f5f9]">✉️ Contact</h3>
+            <a href={`mailto:${personalInfo.email}`} className="text-[#6366f1] hover:text-[#818cf8] transition-colors duration-200 text-sm sm:text-base">
+              {personalInfo.email}
+            </a>
+          </motion.div>
 
-          <button className="px-6 py-3 bg-[#6366f1] hover:bg-[#818cf8] text-white font-medium rounded-lg transition-all duration-200">
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+            viewport={{ once: true }}
+            whileHover={{ scale: 1.05, boxShadow: '0 20px 50px rgba(99, 102, 241, 0.4)' }}
+            whileTap={{ scale: 0.95 }}
+            className="px-6 sm:px-8 py-3 bg-gradient-to-r from-[#6366f1] to-[#7c3aed] hover:from-[#818cf8] hover:to-[#a78bfa] text-white font-semibold rounded-lg transition-all duration-200 text-sm sm:text-base"
+          >
             Download Resume
-          </button>
+          </motion.button>
         </motion.div>
       </div>
     </section>
