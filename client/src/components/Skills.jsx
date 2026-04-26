@@ -13,11 +13,11 @@ export default function Skills() {
 
       const handleMouseEnter = () => {
         gsap.to(skill, {
-          scale: 1.1,
-          backgroundColor: '#6366f1',
-          color: '#fff',
-          boxShadow: '0 10px 25px rgba(99, 102, 241, 0.3)',
-          duration: 0.3,
+          scale: 1.08,
+          backgroundColor: '#3b82f6',
+          color: '#f8fafc',
+          boxShadow: '0 10px 25px rgba(59, 130, 246, 0.4)',
+          duration: 0.35,
           ease: 'power2.out'
         })
       }
@@ -25,10 +25,10 @@ export default function Skills() {
       const handleMouseLeave = () => {
         gsap.to(skill, {
           scale: 1,
-          backgroundColor: '#111117',
-          color: '#94a3b8',
-          boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
-          duration: 0.3,
+          backgroundColor: '#0f172a',
+          color: '#cbd5e1',
+          boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+          duration: 0.35,
           ease: 'power2.out'
         })
       }
@@ -63,16 +63,16 @@ export default function Skills() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="text-4xl sm:text-5xl font-bold text-[#f1f5f9] mb-4 text-center"
+        className="text-4xl sm:text-5xl font-bold text-[#f8fafc] mb-4 text-center"
       >
         Skills & Expertise
       </motion.h2>
       <motion.div
         initial={{ scaleX: 0 }}
         whileInView={{ scaleX: 1 }}
-        transition={{ delay: 0.2, duration: 0.6 }}
+        transition={{ delay: 0.2, duration: 0.7 }}
         viewport={{ once: true }}
-        className="h-1 w-20 bg-gradient-to-r from-[#6366f1] to-[#a855f7] rounded-full mx-auto mb-16"
+        className="h-1 w-20 bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#8b5cf6] rounded-full mx-auto mb-16"
       ></motion.div>
 
       <motion.div

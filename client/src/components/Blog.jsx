@@ -10,7 +10,7 @@ export default function Blog() {
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
-          className="bg-[#111117] border border-[rgba(255,255,255,0.07)] rounded-xl p-12 text-center max-w-md hover:border-[#6366f1]/30 transition-all duration-300"
+          className="bg-[#0f172a] border border-[rgba(59,130,246,0.12)] rounded-xl p-12 text-center max-w-md hover:border-[#3b82f6]/40 transition-all duration-300"
         >
           <motion.p
             animate={{ y: [0, -5, 0] }}

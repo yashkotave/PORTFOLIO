@@ -73,16 +73,16 @@ export default function Contact() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="text-4xl sm:text-5xl font-bold text-[#f1f5f9] mb-4 text-center"
+        className="text-4xl sm:text-5xl font-bold text-[#f8fafc] mb-4 text-center"
       >
         Get In Touch
       </motion.h2>
       <motion.div
         initial={{ scaleX: 0 }}
         whileInView={{ scaleX: 1 }}
-        transition={{ delay: 0.2, duration: 0.6 }}
+        transition={{ delay: 0.2, duration: 0.7 }}
         viewport={{ once: true }}
-        className="h-1 w-20 bg-gradient-to-r from-[#6366f1] to-[#a855f7] rounded-full mx-auto mb-16"
+        className="h-1 w-20 bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#8b5cf6] rounded-full mx-auto mb-16"
       ></motion.div>
 
       <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
@@ -102,18 +102,18 @@ export default function Contact() {
               <motion.div
                 variants={itemVariants}
                 whileHover={{ x: 8 }}
-                className="flex items-center gap-4 p-4 rounded-lg bg-[#111117]/50 border border-[rgba(99,102,241,0.1)] hover:border-[rgba(99,102,241,0.3)] transition-all duration-200"
+                className="flex items-center gap-4 p-4 rounded-lg bg-[#0f172a]/60 border border-[rgba(59,130,246,0.15)] hover:border-[rgba(59,130,246,0.3)] transition-all duration-300"
               >
                 <motion.div
                   whileHover={{ rotate: 360, scale: 1.15 }}
                   transition={{ duration: 0.6 }}
-                  className="p-3 bg-gradient-to-br from-[#6366f1]/30 to-[#a855f7]/30 rounded-lg text-[#6366f1] flex-shrink-0"
+                  className="p-3 bg-gradient-to-br from-[#3b82f6]/35 to-[#06b6d4]/35 rounded-lg text-[#60a5fa] flex-shrink-0"
                 >
                   <FiMail size={24} />
                 </motion.div>
                 <div>
-                  <p className="text-[#94a3b8] text-sm font-medium">Email</p>
-                  <a href={`mailto:${personalInfo.email}`} className="text-[#f1f5f9] hover:text-[#6366f1] transition-colors duration-200 font-medium">
+                  <p className="text-[#cbd5e1] text-sm font-medium">Email</p>
+                  <a href={`mailto:${personalInfo.email}`} className="text-[#f8fafc] hover:text-[#60a5fa] transition-colors duration-300 font-medium">
                     {personalInfo.email}
                   </a>
                 </div>
@@ -122,18 +122,18 @@ export default function Contact() {
               <motion.div
                 variants={itemVariants}
                 whileHover={{ x: 8 }}
-                className="flex items-center gap-4 p-4 rounded-lg bg-[#111117]/50 border border-[rgba(99,102,241,0.1)] hover:border-[rgba(99,102,241,0.3)] transition-all duration-200"
+                className="flex items-center gap-4 p-4 rounded-lg bg-[#0f172a]/60 border border-[rgba(59,130,246,0.15)] hover:border-[rgba(59,130,246,0.3)] transition-all duration-300"
               >
                 <motion.div
                   whileHover={{ rotate: 360, scale: 1.15 }}
                   transition={{ duration: 0.6 }}
-                  className="p-3 bg-gradient-to-br from-[#6366f1]/30 to-[#a855f7]/30 rounded-lg text-[#6366f1] flex-shrink-0"
+                  className="p-3 bg-gradient-to-br from-[#3b82f6]/35 to-[#06b6d4]/35 rounded-lg text-[#60a5fa] flex-shrink-0"
                 >
                   <FiMapPin size={24} />
                 </motion.div>
                 <div>
-                  <p className="text-[#94a3b8] text-sm font-medium">Location</p>
-                  <p className="text-[#f1f5f9] font-medium">{personalInfo.location}</p>
+                  <p className="text-[#cbd5e1] text-sm font-medium">Location</p>
+                  <p className="text-[#f8fafc] font-medium">{personalInfo.location}</p>
                 </div>
               </motion.div>
             </div>
@@ -143,7 +143,7 @@ export default function Contact() {
             <motion.h3 variants={itemVariants} className="text-2xl font-semibold text-[#f1f5f9] mb-6">
               Follow Me
             </motion.h3>
-            <motion.div className="flex gap-4 flex-wrap">
+          <motion.div className="flex gap-4 flex-wrap">
               {[
                 { icon: FaGithub, url: personalInfo.socials.github, label: 'GitHub' },
                 { icon: FaLinkedin, url: personalInfo.socials.linkedin, label: 'LinkedIn' },
@@ -155,9 +155,9 @@ export default function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   variants={itemVariants}
-                  whileHover={{ scale: 1.15, y: -5, boxShadow: '0 15px 30px rgba(99, 102, 241, 0.3)' }}
+                  whileHover={{ scale: 1.15, y: -5, boxShadow: '0 15px 30px rgba(59, 130, 246, 0.35)' }}
                   whileTap={{ scale: 0.9 }}
-                  className="p-4 bg-gradient-to-br from-[#111117] to-[#0a0a0f] border border-[rgba(99,102,241,0.1)] hover:border-[#6366f1]/50 rounded-lg text-[#94a3b8] hover:text-[#6366f1] transition-all duration-200"
+                  className="p-4 bg-gradient-to-br from-[#0f172a] to-[#030712] border border-[rgba(59,130,246,0.15)] hover:border-[#3b82f6]/50 rounded-lg text-[#cbd5e1] hover:text-[#60a5fa] transition-all duration-300"
                   title={social.label}
                 >
                   <social.icon size={24} />
@@ -187,8 +187,8 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.5 }}
             viewport={{ once: true }}
-            whileFocus={{ boxShadow: '0 0 30px rgba(99, 102, 241, 0.3)' }}
-            className="w-full bg-[#111117] border border-[rgba(99,102,241,0.1)] rounded-lg px-4 sm:px-6 py-3 text-[#f1f5f9] placeholder-[#475569] focus:outline-none focus:border-[#6366f1]/60 focus:bg-[#111117] transition-all duration-200 text-sm sm:text-base"
+            whileFocus={{ boxShadow: '0 0 30px rgba(59, 130, 246, 0.35)' }}
+            className="w-full bg-[#0f172a] border border-[rgba(59,130,246,0.15)] rounded-lg px-4 sm:px-6 py-3 text-[#f8fafc] placeholder-[#64748b] focus:outline-none focus:border-[#3b82f6]/70 focus:bg-[#0f172a] transition-all duration-300 text-sm sm:text-base"
           />
 
           <motion.input
@@ -202,8 +202,8 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15, duration: 0.5 }}
             viewport={{ once: true }}
-            whileFocus={{ boxShadow: '0 0 30px rgba(99, 102, 241, 0.3)' }}
-            className="w-full bg-[#111117] border border-[rgba(99,102,241,0.1)] rounded-lg px-4 sm:px-6 py-3 text-[#f1f5f9] placeholder-[#475569] focus:outline-none focus:border-[#6366f1]/60 focus:bg-[#111117] transition-all duration-200 text-sm sm:text-base"
+            whileFocus={{ boxShadow: '0 0 30px rgba(59, 130, 246, 0.35)' }}
+            className="w-full bg-[#0f172a] border border-[rgba(59,130,246,0.15)] rounded-lg px-4 sm:px-6 py-3 text-[#f8fafc] placeholder-[#64748b] focus:outline-none focus:border-[#3b82f6]/70 focus:bg-[#0f172a] transition-all duration-300 text-sm sm:text-base"
           />
 
           <motion.input
@@ -217,8 +217,8 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
             viewport={{ once: true }}
-            whileFocus={{ boxShadow: '0 0 30px rgba(99, 102, 241, 0.3)' }}
-            className="w-full bg-[#111117] border border-[rgba(99,102,241,0.1)] rounded-lg px-4 sm:px-6 py-3 text-[#f1f5f9] placeholder-[#475569] focus:outline-none focus:border-[#6366f1]/60 focus:bg-[#111117] transition-all duration-200 text-sm sm:text-base"
+            whileFocus={{ boxShadow: '0 0 30px rgba(59, 130, 246, 0.35)' }}
+            className="w-full bg-[#0f172a] border border-[rgba(59,130,246,0.15)] rounded-lg px-4 sm:px-6 py-3 text-[#f8fafc] placeholder-[#64748b] focus:outline-none focus:border-[#3b82f6]/70 focus:bg-[#0f172a] transition-all duration-300 text-sm sm:text-base"
           />
 
           <motion.textarea
@@ -232,8 +232,8 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.25, duration: 0.5 }}
             viewport={{ once: true }}
-            whileFocus={{ boxShadow: '0 0 30px rgba(99, 102, 241, 0.3)' }}
-            className="w-full bg-[#111117] border border-[rgba(99,102,241,0.1)] rounded-lg px-4 sm:px-6 py-3 text-[#f1f5f9] placeholder-[#475569] focus:outline-none focus:border-[#6366f1]/60 focus:bg-[#111117] transition-all duration-200 resize-none text-sm sm:text-base"
+            whileFocus={{ boxShadow: '0 0 30px rgba(59, 130, 246, 0.35)' }}
+            className="w-full bg-[#0f172a] border border-[rgba(59,130,246,0.15)] rounded-lg px-4 sm:px-6 py-3 text-[#f8fafc] placeholder-[#64748b] focus:outline-none focus:border-[#3b82f6]/70 focus:bg-[#0f172a] transition-all duration-300 resize-none text-sm sm:text-base"
           ></motion.textarea>
 
           <motion.button
@@ -243,9 +243,9 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.5 }}
             viewport={{ once: true }}
-            whileHover={{ scale: 1.02, boxShadow: '0 20px 50px rgba(99, 102, 241, 0.4)' }}
+            whileHover={{ scale: 1.02, boxShadow: '0 20px 50px rgba(59, 130, 246, 0.4)' }}
             whileTap={{ scale: 0.98 }}
-            className="w-full px-6 py-3 bg-gradient-to-r from-[#6366f1] to-[#7c3aed] hover:from-[#818cf8] hover:to-[#a78bfa] text-white font-semibold rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
+            className="w-full px-6 py-3 bg-gradient-to-r from-[#3b82f6] to-[#8b5cf6] hover:from-[#60a5fa] hover:to-[#a78bfa] text-white font-semibold rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
           >
             {loading ? (
               <motion.span

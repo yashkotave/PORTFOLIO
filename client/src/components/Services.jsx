@@ -58,7 +58,7 @@ export default function Services() {
 
   return (
     <section id="services" className="py-20 px-6 max-w-6xl mx-auto">
-      <h2 className="text-4xl font-bold text-[#f1f5f9] mb-16 text-center" data-scroll-animate>Services</h2>
+      <h2 className="text-4xl font-bold text-[#f8fafc] mb-16 text-center" data-scroll-animate>Services</h2>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {services.map((service, idx) => {
@@ -71,18 +71,18 @@ export default function Services() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="bg-[#111117] border border-[rgba(255,255,255,0.07)] rounded-xl p-6 transition-all duration-300 text-center group"
+              className="bg-[#0f172a] border border-[rgba(59,130,246,0.12)] rounded-xl p-6 transition-all duration-300 text-center group"
             >
               <motion.div
                 data-icon
-                className="w-16 h-16 bg-[#6366f1]/20 rounded-lg flex items-center justify-center mx-auto mb-6 text-[#6366f1]"
+                className="w-16 h-16 bg-[#3b82f6]/22 rounded-lg flex items-center justify-center mx-auto mb-6 text-[#60a5fa]"
                 whileHover={{ rotate: 20 }}
               >
                 <Icon size={28} />
               </motion.div>
 
-              <h3 className="text-lg font-semibold text-[#f1f5f9] mb-3">{service.title}</h3>
-              <p className="text-[#94a3b8]">{service.description}</p>
+              <h3 className="text-lg font-semibold text-[#f8fafc] mb-3">{service.title}</h3>
+              <p className="text-[#cbd5e1]">{service.description}</p>
             </motion.div>
           )
         })}

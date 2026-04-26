@@ -19,9 +19,9 @@ export default function Projects() {
 
       const handleMouseEnter = () => {
         gsap.to(card, {
-          scale: 1.05,
-          boxShadow: '0 25px 50px rgba(99, 102, 241, 0.3)',
-          duration: 0.3,
+          scale: 1.04,
+          boxShadow: '0 25px 50px rgba(59, 130, 246, 0.35)',
+          duration: 0.35,
           ease: 'power2.out'
         })
       }
@@ -29,8 +29,8 @@ export default function Projects() {
       const handleMouseLeave = () => {
         gsap.to(card, {
           scale: 1,
-          boxShadow: '0 10px 30px rgba(0, 0, 0, 0.2)',
-          duration: 0.3,
+          boxShadow: '0 10px 30px rgba(0, 0, 0, 0.25)',
+          duration: 0.35,
           ease: 'power2.out'
         })
       }
@@ -68,13 +68,13 @@ export default function Projects() {
       >
         <motion.h2
           variants={titleVariants}
-          className="text-4xl sm:text-5xl font-bold text-[#f1f5f9] mb-4 text-center"
+          className="text-4xl sm:text-5xl font-bold text-[#f8fafc] mb-4 text-center"
         >
-          Featured Projects
+          Projects
         </motion.h2>
         <motion.div
           variants={titleVariants}
-          className="h-1 w-20 bg-gradient-to-r from-[#6366f1] to-[#a855f7] rounded-full mx-auto mb-12"
+          className="h-1 w-20 bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#8b5cf6] rounded-full mx-auto mb-12"
         ></motion.div>
 
         <motion.div
@@ -92,10 +92,10 @@ export default function Projects() {
               onClick={() => setFilter(cat)}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 capitalize text-sm sm:text-base ${
+              className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 capitalize text-sm sm:text-base ${
                 filter === cat
-                  ? 'bg-gradient-to-r from-[#6366f1] to-[#7c3aed] text-white shadow-lg shadow-[#6366f1]/50'
-                  : 'bg-[#111117] border border-[rgba(255,255,255,0.1)] text-[#94a3b8] hover:border-[#6366f1]/50 hover:text-[#6366f1]'
+                  ? 'bg-gradient-to-r from-[#3b82f6] to-[#8b5cf6] text-white shadow-lg shadow-[#3b82f6]/50'
+                  : 'bg-[#0f172a] border border-[rgba(59,130,246,0.15)] text-[#cbd5e1] hover:border-[#3b82f6]/50 hover:text-[#3b82f6]'
               }`}
             >
               {cat}
@@ -115,27 +115,18 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-br from-[#111117] to-[#0a0a0f] border border-[rgba(99,102,241,0.1)] hover:border-[rgba(99,102,241,0.3)] rounded-xl p-6 group relative overflow-hidden"
+              className="bg-gradient-to-br from-[#0f172a] to-[#030712] border border-[rgba(59,130,246,0.12)] hover:border-[rgba(59,130,246,0.3)] rounded-xl p-6 group relative overflow-hidden"
             >
               {/* Background gradient on hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#6366f1]/5 to-[#a855f7]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-[#3b82f6]/5 to-[#06b6d4]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
 
-              {project.featured && (
-                <motion.div
-                  initial={{ scale: 0, rotate: -180 }}
-                  whileInView={{ scale: 1, rotate: 0 }}
-                  transition={{ delay: idx * 0.1 + 0.3, type: 'spring' }}
-                  className="absolute top-4 right-4 px-3 py-1 bg-gradient-to-r from-[#6366f1]/20 to-[#a855f7]/20 text-[#6366f1] text-xs font-semibold rounded-full border border-[#6366f1]/30 backdrop-blur-sm"
-                >
-                  ⭐ Featured
-                </motion.div>
-              )}
 
-              <h3 className="text-lg sm:text-xl font-semibold text-[#f1f5f9] mb-2 group-hover:text-[#6366f1] transition-colors duration-200">
+
+              <h3 className="text-lg sm:text-xl font-semibold text-[#f8fafc] mb-2 group-hover:text-[#60a5fa] transition-colors duration-300">
                 {project.title}
               </h3>
-              <p className="text-[#6366f1]/80 text-sm mb-3 font-medium">{project.subtitle}</p>
-              <p className="text-[#94a3b8] text-sm mb-6 line-clamp-3 leading-relaxed">{project.description}</p>
+              <p className="text-[#60a5fa]/90 text-sm mb-3 font-medium">{project.subtitle}</p>
+              <p className="text-[#cbd5e1] text-sm mb-6 line-clamp-3 leading-relaxed">{project.description}</p>
 
               <div className="flex flex-wrap gap-2 mb-6">
                 {project.techStack.slice(0, 3).map((tech, i) => (
@@ -144,13 +135,13 @@ export default function Projects() {
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ delay: idx * 0.1 + i * 0.05 }}
-                    className="px-2.5 py-1 bg-[#6366f1]/10 hover:bg-[#6366f1]/15 text-[#818cf8] text-xs rounded-md font-mono transition-colors duration-200"
+                    className="px-2.5 py-1 bg-[#3b82f6]/12 hover:bg-[#3b82f6]/18 text-[#60a5fa] text-xs rounded-md font-mono transition-colors duration-200"
                   >
                     {tech}
                   </motion.span>
                 ))}
                 {project.techStack.length > 3 && (
-                  <span className="px-2.5 py-1 bg-[#6366f1]/10 text-[#818cf8] text-xs rounded-md font-mono">
+                  <span className="px-2.5 py-1 bg-[#3b82f6]/12 text-[#60a5fa] text-xs rounded-md font-mono">
                     +{project.techStack.length - 3}
                   </span>
                 )}
@@ -162,7 +153,7 @@ export default function Projects() {
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ x: 3 }}
-                  className="flex items-center gap-2 text-[#6366f1] hover:text-[#818cf8] font-medium text-sm transition-colors duration-200"
+                  className="flex items-center gap-2 text-[#60a5fa] hover:text-[#93c5fd] font-medium text-sm transition-colors duration-300"
                 >
                   <FiGithub size={16} /> GitHub
                 </motion.a>
@@ -172,7 +163,7 @@ export default function Projects() {
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ x: 3 }}
-                    className="flex items-center gap-2 text-[#a855f7] hover:text-[#d084f8] font-medium text-sm transition-colors duration-200 ml-auto"
+                    className="flex items-center gap-2 text-[#a78bfa] hover:text-[#c4b5fd] font-medium text-sm transition-colors duration-300 ml-auto"
                   >
                     Live <FiExternalLink size={16} />
                   </motion.a>

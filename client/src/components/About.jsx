@@ -68,16 +68,16 @@ export default function About() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="text-4xl sm:text-5xl font-bold text-[#f1f5f9] mb-4 text-center"
+        className="text-4xl sm:text-5xl font-bold text-[#f8fafc] mb-4 text-center"
       >
         About Me
       </motion.h2>
       <motion.div
         initial={{ scaleX: 0 }}
         whileInView={{ scaleX: 1 }}
-        transition={{ delay: 0.2, duration: 0.6 }}
+        transition={{ delay: 0.2, duration: 0.7 }}
         viewport={{ once: true }}
-        className="h-1 w-20 bg-gradient-to-r from-[#6366f1] to-[#a855f7] rounded-full mx-auto mb-16"
+        className="h-1 w-20 bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#8b5cf6] rounded-full mx-auto mb-16"
       ></motion.div>
 
       <div className="grid md:grid-cols-2 gap-8 lg:gap-16 items-center">
@@ -97,15 +97,15 @@ export default function About() {
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-              className="absolute inset-0 bg-gradient-to-r from-[#6366f1] to-[#a855f7] rounded-2xl opacity-0 group-hover:opacity-100 blur-xl"
+              className="absolute inset-0 bg-gradient-to-r from-[#3b82f6] to-[#06b6d4] rounded-2xl opacity-0 group-hover:opacity-100 blur-xl"
             ></motion.div>
-            <div className="relative w-56 h-56 bg-gradient-to-br from-[#111117] to-[#0a0a0f] rounded-2xl flex items-center justify-center border border-[rgba(99,102,241,0.2)] hover:border-[#6366f1]/60 transition-all duration-300 shadow-lg">
+            <div className="relative w-56 h-56 bg-gradient-to-br from-[#0f172a] to-[#030712] rounded-2xl flex items-center justify-center border border-[rgba(59,130,246,0.25)] hover:border-[#3b82f6]/60 transition-all duration-300 shadow-lg">
               <motion.div
                 animate={{ y: [0, -12, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
                 className="text-center"
               >
-                <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-br from-[#6366f1] to-[#a855f7] bg-clip-text text-transparent">
+                <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-br from-[#3b82f6] to-[#06b6d4] bg-clip-text text-transparent">
                   YASH
                 </div>
                 <div className="text-2xl sm:text-3xl font-bold bg-gradient-to-br from-[#a855f7] to-[#0ea5e9] bg-clip-text text-transparent">
@@ -127,9 +127,9 @@ export default function About() {
                 key={i}
                 ref={el => statRefs.current[i] = el}
                 variants={itemVariants}
-                className="bg-gradient-to-br from-[#111117] to-[#0a0a0f] border border-[rgba(99,102,241,0.1)] hover:border-[#6366f1]/50 rounded-xl p-4 sm:p-6 hover:shadow-lg hover:shadow-[#6366f1]/10 transition-all duration-300 group cursor-default"
+                className="bg-gradient-to-br from-[#0f172a] to-[#030712] border border-[rgba(59,130,246,0.12)] hover:border-[#3b82f6]/50 rounded-xl p-4 sm:p-6 hover:shadow-lg hover:shadow-[#3b82f6]/15 transition-all duration-300 group cursor-default">
               >
-                <div className="text-3xl sm:text-4xl font-bold text-transparent bg-gradient-to-r from-[#6366f1] to-[#a855f7] bg-clip-text group-hover:from-[#818cf8] group-hover:to-[#d084f8] transition-all duration-300">
+                <div className="text-3xl sm:text-4xl font-bold text-transparent bg-gradient-to-r from-[#3b82f6] to-[#06b6d4] bg-clip-text group-hover:from-[#60a5fa] group-hover:to-[#22d3ee] transition-all duration-300">
                   <span data-counter>0</span>{stat.suffix}
                 </div>
                 <div className="text-[#94a3b8] text-xs sm:text-sm font-medium mt-1">{stat.label}</div>
@@ -175,7 +175,7 @@ export default function About() {
             className="space-y-2"
           >
             <h3 className="text-lg font-semibold text-[#f1f5f9]">✉️ Contact</h3>
-            <a href={`mailto:${personalInfo.email}`} className="text-[#6366f1] hover:text-[#818cf8] transition-colors duration-200 text-sm sm:text-base">
+            <a href={`mailto:${personalInfo.email}`} className="text-[#60a5fa] hover:text-[#93c5fd] transition-colors duration-300 text-sm sm:text-base">
               {personalInfo.email}
             </a>
           </motion.div>
@@ -187,7 +187,7 @@ export default function About() {
             viewport={{ once: true }}
             whileHover={{ scale: 1.05, boxShadow: '0 20px 50px rgba(99, 102, 241, 0.4)' }}
             whileTap={{ scale: 0.95 }}
-            className="px-6 sm:px-8 py-3 bg-gradient-to-r from-[#6366f1] to-[#7c3aed] hover:from-[#818cf8] hover:to-[#a78bfa] text-white font-semibold rounded-lg transition-all duration-200 text-sm sm:text-base"
+            className="px-6 sm:px-8 py-3 bg-gradient-to-r from-[#3b82f6] to-[#8b5cf6] hover:from-[#60a5fa] hover:to-[#a78bfa] text-white font-semibold rounded-lg transition-all duration-300 text-sm sm:text-base"
           >
             Download Resume
           </motion.button>

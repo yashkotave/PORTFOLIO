@@ -27,21 +27,21 @@ export default function Hero() {
   useEffect(() => {
     const handleMouseMove = (e) => {
       if (!bgRef.current || !secondBgRef.current) return
-      const x = (e.clientX / window.innerWidth) * 30
-      const y = (e.clientY / window.innerHeight) * 30
+      const x = (e.clientX / window.innerWidth) * 20
+      const y = (e.clientY / window.innerHeight) * 20
 
       gsap.to(bgRef.current, {
-        x: x * 0.5,
-        y: y * 0.5,
-        duration: 0.8,
-        ease: 'power1.out'
+        x: x * 0.4,
+        y: y * 0.4,
+        duration: 0.9,
+        ease: 'power2.out'
       })
 
       gsap.to(secondBgRef.current, {
-        x: x,
-        y: y,
-        duration: 0.8,
-        ease: 'power1.out'
+        x: x * 0.6,
+        y: y * 0.6,
+        duration: 0.9,
+        ease: 'power2.out'
       })
     }
 
@@ -53,26 +53,26 @@ export default function Hero() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.2, delayChildren: 0.3 }
+      transition: { staggerChildren: 0.15, delayChildren: 0.2 }
     }
   }
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } }
   }
 
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-      {/* Enhanced gradient backgrounds */}
+      {/* Enhanced gradient backgrounds with professional colors */}
       <div
         ref={bgRef}
-        className="absolute w-80 h-80 bg-gradient-to-tr from-[#6366f1]/15 to-[#a855f7]/15 rounded-full blur-3xl -z-10 top-1/4 left-1/2 -translate-x-1/2"
+        className="absolute w-96 h-96 bg-gradient-to-tr from-[#3b82f6]/20 to-[#8b5cf6]/15 rounded-full blur-3xl -z-10 top-1/4 left-1/2 -translate-x-1/2"
       ></div>
 
       <div
         ref={secondBgRef}
-        className="absolute w-72 h-72 bg-gradient-to-br from-[#0ea5e9]/15 to-[#6366f1]/15 rounded-full blur-3xl -z-10 top-1/2 right-0"
+        className="absolute w-80 h-80 bg-gradient-to-br from-[#06b6d4]/20 to-[#3b82f6]/15 rounded-full blur-3xl -z-10 top-1/2 right-0"
       ></div>
 
       <motion.div
@@ -83,13 +83,13 @@ export default function Hero() {
       >
         <motion.h1
           variants={itemVariants}
-          className="text-4xl sm:text-5xl md:text-7xl font-bold text-[#f1f5f9] mb-6 tracking-tight"
+          className="text-5xl sm:text-6xl md:text-7xl font-bold text-[#f8fafc] mb-6 tracking-tight"
         >
           {displayedText}
           <motion.span
             animate={{ opacity: [1, 0] }}
             transition={{ duration: 0.7, repeat: Infinity }}
-            className="text-[#6366f1]"
+            className="text-[#3b82f6]"
           >
             |
           </motion.span>
@@ -97,14 +97,14 @@ export default function Hero() {
 
         <motion.p
           variants={itemVariants}
-          className="text-lg sm:text-xl md:text-2xl bg-gradient-to-r from-[#6366f1] to-[#a855f7] bg-clip-text text-transparent mb-4 font-semibold"
+          className="text-lg sm:text-xl md:text-2xl bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#8b5cf6] bg-clip-text text-transparent mb-4 font-semibold"
         >
           {personalInfo.name}
         </motion.p>
 
         <motion.p
           variants={itemVariants}
-          className="text-base sm:text-lg md:text-lg text-[#94a3b8] max-w-2xl mx-auto mb-12 leading-relaxed"
+          className="text-base sm:text-lg md:text-lg text-[#cbd5e1] max-w-2xl mx-auto mb-12 leading-relaxed"
         >
           {personalInfo.tagline}
         </motion.p>
@@ -114,9 +114,9 @@ export default function Hero() {
           className="flex gap-3 sm:gap-4 justify-center mb-12 flex-wrap"
         >
           <motion.button
-            whileHover={{ scale: 1.05, boxShadow: '0 20px 50px rgba(99, 102, 241, 0.4)' }}
+            whileHover={{ scale: 1.05, boxShadow: '0 20px 50px rgba(59, 130, 246, 0.4)' }}
             whileTap={{ scale: 0.95 }}
-            className="px-6 sm:px-8 py-3 bg-gradient-to-r from-[#6366f1] to-[#7c3aed] hover:from-[#818cf8] hover:to-[#a78bfa] text-white font-semibold rounded-lg transition-all duration-200 shadow-lg"
+            className="px-6 sm:px-8 py-3 bg-gradient-to-r from-[#3b82f6] to-[#8b5cf6] hover:from-[#60a5fa] hover:to-[#a78bfa] text-[#f8fafc] font-semibold rounded-lg transition-all duration-300 shadow-lg"
           >
             View My Work
           </motion.button>

@@ -13,7 +13,7 @@ export default function Experience() {
       const handleMouseEnter = () => {
         gsap.to(card, {
           boxShadow: '0 20px 40px rgba(99, 102, 241, 0.2)',
-          borderColor: '#6366f1',
+          borderColor: '#3b82f6',
           duration: 0.3
         })
       }
@@ -38,7 +38,7 @@ export default function Experience() {
 
   return (
     <section id="experience" className="py-20 px-6 max-w-6xl mx-auto">
-      <h2 className="text-4xl font-bold text-[#f1f5f9] mb-16 text-center" data-scroll-animate>Experience</h2>
+      <h2 className="text-4xl font-bold text-[#f8fafc] mb-16 text-center" data-scroll-animate>Experience</h2>
 
       <div className="space-y-8">
         {experience.map((exp, idx) => (
@@ -53,18 +53,18 @@ export default function Experience() {
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
               transition={{ delay: idx * 0.1 + 0.2 }}
-              className="absolute left-0 top-2 w-4 h-4 bg-[#6366f1] rounded-full border-4 border-[#0a0a0f]"
+              className="absolute left-0 top-2 w-4 h-4 bg-[#3b82f6] rounded-full border-4 border-[#030712]"
             ></motion.div>
-            <div className="absolute left-1.5 top-8 bottom-0 w-0.5 bg-gradient-to-b from-[#6366f1]/60 to-[#6366f1]/10"></div>
+            <div className="absolute left-1.5 top-8 bottom-0 w-0.5 bg-gradient-to-b from-[#3b82f6]/70 to-[#3b82f6]/10"></div>
 
             <div
               ref={el => cardRefs.current[idx] = el}
-              className="bg-[#111117] border border-[rgba(255,255,255,0.07)] rounded-xl p-6 transition-all duration-300"
+              className="bg-[#0f172a] border border-[rgba(59,130,246,0.12)] rounded-xl p-6 transition-all duration-300"
             >
-              <h3 className="text-xl font-semibold text-[#f1f5f9]">{exp.role}</h3>
-              <p className="text-[#6366f1] font-medium">{exp.company}</p>
-              <p className="text-[#94a3b8] text-sm mt-1">{exp.duration}</p>
-              <p className="text-[#94a3b8] mt-4">{exp.description}</p>
+              <h3 className="text-xl font-semibold text-[#f8fafc]">{exp.role}</h3>
+              <p className="text-[#60a5fa] font-medium">{exp.company}</p>
+              <p className="text-[#cbd5e1] text-sm mt-1">{exp.duration}</p>
+              <p className="text-[#cbd5e1] mt-4">{exp.description}</p>
 
               <div className="flex flex-wrap gap-2 mt-4">
                 {exp.technologies.map((tech, i) => (
@@ -73,7 +73,7 @@ export default function Experience() {
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ delay: idx * 0.1 + i * 0.05 }}
-                    className="px-2 py-0.5 bg-[#6366f1]/10 text-[#818cf8] text-xs rounded font-mono"
+                    className="px-2 py-0.5 bg-[#3b82f6]/15 text-[#60a5fa] text-xs rounded font-mono"
                   >
                     {tech}
                   </motion.span>

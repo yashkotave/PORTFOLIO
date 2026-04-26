@@ -102,7 +102,7 @@ export const projects = [
       demo: "",
     },
     featured: true,
-    category: "fullstack",
+    category: "ai",
     startDate: "2024-01",
     endDate: "2024-02",
     status: "completed",
@@ -216,7 +216,7 @@ export const projects = [
     techStack: ["React.js", "Node.js", "Express.js", "Google Sheets API", "Tailwind CSS"],
     links: {
       github: "https://github.com/yashkotave/ektask",
-      live: "",
+      live: "https://ektask.vercel.app/",
       demo: "",
     },
     featured: false,
