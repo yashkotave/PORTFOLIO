@@ -1,14 +1,21 @@
 import { motion } from 'framer-motion'
-import { FiArrowDown } from 'react-icons/fi'
+import { FiArrowDown, FiMail, FiPhone } from 'react-icons/fi'
 import { FaGithub, FaLinkedin, FaTwitter, FaInstagram } from 'react-icons/fa'
 import { personalInfo } from '../config/data'
-import { useEffect, useRef } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import gsap from 'gsap'
 
 export default function Hero() {
   const bgRef = useRef(null)
   const secondBgRef = useRef(null)
-  const upperName = personalInfo.name.split(' ')[0].toUpperCase()
+  const [typedName, setTypedName] = useState('')
+  const [typedTitle, setTypedTitle] = useState('')
+  const upperName = personalInfo.name.toUpperCase()
+  const nameText = `Hello, I am ${upperName}`
+  const roles = useMemo(
+    () => [personalInfo.title, 'Backend Developer', 'Frontend Developer', 'Problem Solver', 'Quick Learner'],
+    [personalInfo.title]
+  )
   const floatingSkills = [
     { label: 'React.js', top: '15%', left: '8%' },
     { label: 'Node.js', top: '25%', left: '85%' },
@@ -26,6 +33,59 @@ export default function Hero() {
   ]
 
   // Enhanced parallax effect on mouse move
+  useEffect(() => {
+    const timeouts = []
+
+    const typeText = (text, setter, speed, delay) => {
+      for (let i = 1; i <= text.length; i += 1) {
+        timeouts.push(
+          window.setTimeout(() => {
+            setter(text.slice(0, i))
+          }, delay + speed * i)
+        )
+      }
+    }
+
+    // Type the name once at the beginning
+    const nameStart = 100
+    typeText(nameText, setTypedName, 80, nameStart)
+
+    const roleCycleStart = nameStart + nameText.length * 80 + 300
+
+    // Calculate total time for one complete role cycle
+    const calculateCycleDuration = () => {
+      return roles.reduce((total, role) => total + role.length * 80 + 1000, 0)
+    }
+
+    const cycleDuration = calculateCycleDuration()
+
+    const scheduleRoleCycle = (delayFromNow) => {
+      let currentTime = delayFromNow
+
+      roles.forEach((role) => {
+        timeouts.push(
+          window.setTimeout(() => {
+            setTypedTitle('')
+          }, currentTime - 50)
+        )
+
+        typeText(role, setTypedTitle, 80, currentTime)
+        currentTime += role.length * 80 + 1000
+      })
+
+      // Schedule the next cycle after this one completes
+      timeouts.push(
+        window.setTimeout(() => {
+          scheduleRoleCycle(0)
+        }, currentTime)
+      )
+    }
+
+    scheduleRoleCycle(roleCycleStart)
+
+    return () => timeouts.forEach((id) => window.clearTimeout(id))
+  }, [])
+
   useEffect(() => {
     const handleMouseMove = (e) => {
       if (!bgRef.current || !secondBgRef.current) return
@@ -105,14 +165,24 @@ export default function Hero() {
           variants={itemVariants}
           className="text-5xl sm:text-6xl md:text-7xl font-bold text-[#f8fafc] mb-6 tracking-tight"
         >
-          Hello, I am {upperName}
+          <span className="inline-flex items-center whitespace-nowrap">
+            {typedName}
+            {typedName && (
+              <span className="inline-block w-1 h-[1.1em] bg-[#60a5fa] ml-2 rounded animate-pulse" />
+            )}
+          </span>
         </motion.h1>
 
         <motion.p
           variants={itemVariants}
           className="text-lg sm:text-xl md:text-2xl text-[#cbd5e1] mb-4 font-semibold"
         >
-          {personalInfo.title}
+          <span className="inline-flex items-center whitespace-nowrap">
+            {typedTitle}
+            {typedTitle && (
+              <span className="inline-block w-1 h-[1.1em] bg-[#60a5fa] ml-2 rounded animate-pulse" />
+            )}
+          </span>
         </motion.p>
 
         <motion.p
@@ -149,8 +219,28 @@ export default function Hero() {
 
         <motion.div
           variants={itemVariants}
-          className="flex gap-6 justify-center text-2xl sm:text-3xl text-[#94a3b8]"
+          className="flex gap-4 justify-center items-center mb-6 text-2xl sm:text-3xl text-[#94a3b8]"
         >
+          <motion.a
+            href={`mailto:${personalInfo.email}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.15, color: '#6366f1' }}
+            whileTap={{ scale: 0.9 }}
+            className="hover:text-[#6366f1] transition-colors duration-200"
+            title="Email"
+          >
+            <FiMail />
+          </motion.a>
+          <motion.a
+            href={`tel:${personalInfo.phone}`}
+            whileHover={{ scale: 1.15, color: '#6366f1' }}
+            whileTap={{ scale: 0.9 }}
+            className="hover:text-[#6366f1] transition-colors duration-200"
+            title="Phone"
+          >
+            <FiPhone />
+          </motion.a>
           {[personalInfo.socials.github, personalInfo.socials.linkedin, personalInfo.socials.twitter, personalInfo.socials.instagram].map((url, idx) => (
             <motion.a
               key={idx}
@@ -158,11 +248,11 @@ export default function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{
-                scale: 1.25,
+                scale: 1.15,
                 color: '#6366f1',
                 textShadow: '0 0 8px rgba(99, 102, 241, 0.5)'
               }}
-              whileTap={{ scale: 0.85 }}
+              whileTap={{ scale: 0.9 }}
               className="hover:text-[#6366f1] transition-colors duration-200"
             >
               {idx === 0 && <FaGithub />}

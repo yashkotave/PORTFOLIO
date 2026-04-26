@@ -12,7 +12,7 @@ export const personalInfo = {
   // Basic Information
   name: "Yash Kotave",
   title: "Full Stack Developer",
-  tagline: "Aspiring Full Stack Developer specializing in the MERN stack",
+  tagline: "Full Stack Developer specializing in MERN Stack & AI based web solutions",
 
   // Bio/Summary
   summary: `Aspiring Full Stack Developer specializing in the MERN stack,

@@ -128,7 +128,6 @@ export default function About() {
                 ref={el => statRefs.current[i] = el}
                 variants={itemVariants}
                 className="bg-gradient-to-br from-[#0f172a] to-[#030712] border border-[rgba(59,130,246,0.12)] hover:border-[#3b82f6]/50 rounded-xl p-4 sm:p-6 hover:shadow-lg hover:shadow-[#3b82f6]/15 transition-all duration-300 group cursor-default">
-              >
                 <div className="text-3xl sm:text-4xl font-bold text-transparent bg-gradient-to-r from-[#3b82f6] to-[#06b6d4] bg-clip-text group-hover:from-[#60a5fa] group-hover:to-[#22d3ee] transition-all duration-300">
                   <span data-counter>0</span>{stat.suffix}
                 </div>
@@ -156,6 +155,16 @@ export default function About() {
             {personalInfo.summary}
           </motion.p>
 
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-[#94a3b8] leading-relaxed text-sm sm:text-base"
+          >
+            I also build intelligent applications using Agentic AI and Gen AI, leveraging RAG, LangChain, and Gemini API to deliver adaptive, context-aware solutions.
+          </motion.p>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -178,6 +187,9 @@ export default function About() {
             <a href={`mailto:${personalInfo.email}`} className="text-[#60a5fa] hover:text-[#93c5fd] transition-colors duration-300 text-sm sm:text-base">
               {personalInfo.email}
             </a>
+            <a href={`tel:${personalInfo.phone}`} className="block text-[#60a5fa] hover:text-[#93c5fd] transition-colors duration-300 text-sm sm:text-base">
+              {personalInfo.phone}
+            </a>
           </motion.div>
 
           <motion.button
@@ -187,6 +199,7 @@ export default function About() {
             viewport={{ once: true }}
             whileHover={{ scale: 1.05, boxShadow: '0 20px 50px rgba(99, 102, 241, 0.4)' }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => window.open(personalInfo.resumeUrl, '_blank')}
             className="px-6 sm:px-8 py-3 bg-gradient-to-r from-[#3b82f6] to-[#8b5cf6] hover:from-[#60a5fa] hover:to-[#a78bfa] text-white font-semibold rounded-lg transition-all duration-300 text-sm sm:text-base"
           >
             Download Resume
