@@ -10,11 +10,19 @@ export default function Hero() {
   const secondBgRef = useRef(null)
   const upperName = personalInfo.name.split(' ')[0].toUpperCase()
   const floatingSkills = [
-    { label: 'React', top: '12%', left: '8%' },
-    { label: 'Node.js', top: '18%', left: '76%' },
-    { label: 'SQL', top: '55%', left: '10%' },
-    { label: 'Gen AI', top: '60%', left: '78%' },
-    { label: 'Agentic AI', top: '72%', left: '44%' }
+    { label: 'React.js', top: '15%', left: '8%' },
+    { label: 'Node.js', top: '25%', left: '85%' },
+    { label: 'MongoDB', top: '35%', left: '10%' },
+    { label: 'Express.js', top: '45%', left: '90%' },
+    { label: 'Tailwind CSS', top: '55%', left: '5%' },
+    { label: 'JavaScript', top: '65%', left: '80%' },
+    { label: 'Git', top: '20%', left: '15%' },
+    { label: 'SQL', top: '30%', left: '88%' },
+    { label: 'Gen AI', top: '40%', left: '12%' },
+    { label: 'Agentic AI', top: '50%', left: '75%' },
+    { label: 'Java', top: '60%', left: '20%' },
+    { label: 'Redux', top: '70%', left: '95%' },
+    { label: 'Socket.io', top: '12%', left: '78%' }
   ]
 
   // Enhanced parallax effect on mouse move
@@ -73,13 +81,15 @@ export default function Hero() {
         <motion.span
           key={skill.label}
           initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: [0.2, 0.5, 0.2], y: [0, -6, 0] }}
+          animate={{ opacity: [0.24, 0.49, 0.24], y: [0, -8, 0] }}
           transition={{ duration: 6 + idx * 0.3, repeat: Infinity, ease: 'easeInOut' }}
+          whileHover={{ scale: 1.1, opacity: 0.9 }}
+          onClick={() => document.getElementById('skills').scrollIntoView({ behavior: 'smooth' })}
           style={{
             top: skill.top,
             left: skill.left
           }}
-          className="absolute pointer-events-none z-0 text-[13px] sm:text-base uppercase tracking-[0.3em] text-white/60 font-semibold"
+          className="absolute z-10 text-[14px] sm:text-lg tracking-[0.1em] text-white/60 font-medium cursor-pointer hover:text-[#3b82f6] transition-colors duration-300"
         >
           {skill.label}
         </motion.span>
@@ -119,6 +129,7 @@ export default function Hero() {
           <motion.button
             whileHover={{ scale: 1.05, boxShadow: '0 20px 50px rgba(59, 130, 246, 0.4)' }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })}
             className="px-6 sm:px-8 py-3 bg-gradient-to-r from-[#3b82f6] to-[#8b5cf6] hover:from-[#60a5fa] hover:to-[#a78bfa] text-[#f8fafc] font-semibold rounded-lg transition-all duration-300 shadow-lg"
           >
             View My Work
@@ -129,6 +140,7 @@ export default function Hero() {
               boxShadow: '0 0 30px rgba(99, 102, 241, 0.3)'
             }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => window.open(personalInfo.resumeUrl, '_blank')}
             className="px-6 sm:px-8 py-3 border-2 border-[#6366f1]/50 hover:border-[#6366f1] text-[#f1f5f9] font-semibold rounded-lg transition-all duration-200"
           >
             Download CV

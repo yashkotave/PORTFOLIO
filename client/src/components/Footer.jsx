@@ -35,6 +35,7 @@ export default function Footer() {
               YASH KOTAVE
             </motion.h3>
             <p className="text-[#cbd5e1]">Full Stack Developer crafting digital solutions</p>
+            <p className="text-[#cbd5e1] mt-2">Phone: <a href={`tel:${personalInfo.phone}`} className="hover:text-[#3b82f6] transition-colors duration-300">{personalInfo.phone}</a></p>
           </motion.div>
 
           <motion.div

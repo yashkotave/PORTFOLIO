@@ -25,8 +25,8 @@ export const personalInfo = {
   // Contact & Location
   location: "Bhopal, India",
   email: "yashkotave1007@gmail.com",
-  phone: "+91-XXXXXXXXXX", // Optional - update if needed
-  resumeUrl: "/resume.pdf",
+  phone: "+91 9165324126",
+  resumeUrl: "https://drive.google.com/file/d/1Gtij2xW0tOLzk04gJYooqbtse1cDdWVb/view?usp=drivesdk",
 
   // Social Media Links
   socials: {

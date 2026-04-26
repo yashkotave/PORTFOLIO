@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { FiMail, FiMapPin } from 'react-icons/fi'
+import { FiMail, FiMapPin, FiPhone } from 'react-icons/fi'
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
 import { personalInfo } from '../config/data'
 import { useState, useRef } from 'react'
@@ -134,6 +134,26 @@ export default function Contact() {
                 <div>
                   <p className="text-[#cbd5e1] text-sm font-medium">Location</p>
                   <p className="text-[#f8fafc] font-medium">{personalInfo.location}</p>
+                </div>
+              </motion.div>
+
+              <motion.div
+                variants={itemVariants}
+                whileHover={{ x: 8 }}
+                className="flex items-center gap-4 p-4 rounded-lg bg-[#0f172a]/60 border border-[rgba(59,130,246,0.15)] hover:border-[rgba(59,130,246,0.3)] transition-all duration-300"
+              >
+                <motion.div
+                  whileHover={{ rotate: 360, scale: 1.15 }}
+                  transition={{ duration: 0.6 }}
+                  className="p-3 bg-gradient-to-br from-[#3b82f6]/35 to-[#06b6d4]/35 rounded-lg text-[#60a5fa] flex-shrink-0"
+                >
+                  <FiPhone size={24} />
+                </motion.div>
+                <div>
+                  <p className="text-[#cbd5e1] text-sm font-medium">Phone</p>
+                  <a href={`tel:${personalInfo.phone}`} className="text-[#f8fafc] hover:text-[#60a5fa] transition-colors duration-300 font-medium">
+                    {personalInfo.phone}
+                  </a>
                 </div>
               </motion.div>
             </div>
