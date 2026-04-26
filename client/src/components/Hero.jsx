@@ -2,26 +2,20 @@ import { motion } from 'framer-motion'
 import { FiArrowDown } from 'react-icons/fi'
 import { FaGithub, FaLinkedin, FaTwitter, FaInstagram } from 'react-icons/fa'
 import { personalInfo } from '../config/data'
-import { useState, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 
 export default function Hero() {
-  const [displayedText, setDisplayedText] = useState('')
-  const fullText = "Full Stack Developer"
   const bgRef = useRef(null)
   const secondBgRef = useRef(null)
-
-  // Enhanced typing effect with better pacing
-  useEffect(() => {
-    let index = 0
-    const interval = setInterval(() => {
-      if (index < fullText.length) {
-        setDisplayedText(fullText.substring(0, index + 1))
-        index++
-      }
-    }, 80)
-    return () => clearInterval(interval)
-  }, [])
+  const upperName = personalInfo.name.split(' ')[0].toUpperCase()
+  const floatingSkills = [
+    { label: 'React', top: '12%', left: '8%' },
+    { label: 'Node.js', top: '18%', left: '76%' },
+    { label: 'SQL', top: '55%', left: '10%' },
+    { label: 'Gen AI', top: '60%', left: '78%' },
+    { label: 'Agentic AI', top: '72%', left: '44%' }
+  ]
 
   // Enhanced parallax effect on mouse move
   useEffect(() => {
@@ -75,6 +69,22 @@ export default function Hero() {
         className="absolute w-80 h-80 bg-gradient-to-br from-[#06b6d4]/20 to-[#3b82f6]/15 rounded-full blur-3xl -z-10 top-1/2 right-0"
       ></div>
 
+      {floatingSkills.map((skill, idx) => (
+        <motion.span
+          key={skill.label}
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: [0.2, 0.5, 0.2], y: [0, -6, 0] }}
+          transition={{ duration: 6 + idx * 0.3, repeat: Infinity, ease: 'easeInOut' }}
+          style={{
+            top: skill.top,
+            left: skill.left
+          }}
+          className="absolute pointer-events-none z-0 text-[13px] sm:text-base uppercase tracking-[0.3em] text-white/60 font-semibold"
+        >
+          {skill.label}
+        </motion.span>
+      ))}
+
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -85,21 +95,14 @@ export default function Hero() {
           variants={itemVariants}
           className="text-5xl sm:text-6xl md:text-7xl font-bold text-[#f8fafc] mb-6 tracking-tight"
         >
-          {displayedText}
-          <motion.span
-            animate={{ opacity: [1, 0] }}
-            transition={{ duration: 0.7, repeat: Infinity }}
-            className="text-[#3b82f6]"
-          >
-            |
-          </motion.span>
+          Hello, I am {upperName}
         </motion.h1>
 
         <motion.p
           variants={itemVariants}
-          className="text-lg sm:text-xl md:text-2xl bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#8b5cf6] bg-clip-text text-transparent mb-4 font-semibold"
+          className="text-lg sm:text-xl md:text-2xl text-[#cbd5e1] mb-4 font-semibold"
         >
-          {personalInfo.name}
+          {personalInfo.title}
         </motion.p>
 
         <motion.p

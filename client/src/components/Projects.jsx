@@ -147,25 +147,27 @@ export default function Projects() {
                 )}
               </div>
 
-              <div className="flex gap-3 pt-4 border-t border-[rgba(255,255,255,0.05)]">
-                <motion.a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ x: 3 }}
-                  className="flex items-center gap-2 text-[#60a5fa] hover:text-[#93c5fd] font-medium text-sm transition-colors duration-300"
-                >
-                  <FiGithub size={16} /> GitHub
-                </motion.a>
-                {project.liveUrl && (
+              <div className="flex flex-wrap gap-3 pt-4 border-t border-[rgba(255,255,255,0.05)]">
+                {project.links.github && (
                   <motion.a
-                    href={project.liveUrl}
+                    href={project.links.github}
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ x: 3 }}
-                    className="flex items-center gap-2 text-[#a78bfa] hover:text-[#c4b5fd] font-medium text-sm transition-colors duration-300 ml-auto"
+                    className="flex items-center gap-2 text-[#60a5fa] hover:text-[#93c5fd] font-medium text-sm transition-colors duration-300"
                   >
-                    Live <FiExternalLink size={16} />
+                    <FiGithub size={16} /> GitHub
+                  </motion.a>
+                )}
+                {(project.links.live || project.links.demo) && (
+                  <motion.a
+                    href={project.links.live || project.links.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ x: 3 }}
+                    className="flex items-center gap-2 text-[#a78bfa] hover:text-[#c4b5fd] font-medium text-sm transition-colors duration-300"
+                  >
+                    Live Demo <FiExternalLink size={16} />
                   </motion.a>
                 )}
               </div>

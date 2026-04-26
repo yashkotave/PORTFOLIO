@@ -50,8 +50,8 @@ export const skills = {
   languages: ["Java", "JavaScript (ES6+)"],
   frontend: ["HTML5", "CSS3", "React.js", "Tailwind CSS", "EJS", "Vite", "Redux", "React Hook Form", "React Router"],
   backend: ["Node.js", "Express.js", "Socket.io", "REST APIs", "Nodemon", "JWT", "FastAPI"],
-  databases: ["MongoDB", "MySQL"],
-  ai: ["RAG", "LangChain", "Gemini API"],
+  databases: ["MongoDB", "MySQL", "SQL"],
+  ai: ["RAG", "LangChain", "Gemini API", "Gen AI", "Agentic AI"],
   tools: ["Git", "GitHub", "VS Code", "Postman", "NPM", "Cloudinary", "Razorpay", "Notion"],
   core: ["DSA", "OOP", "Operating Systems", "DBMS", "Computer Networks"]
 }
@@ -121,8 +121,8 @@ export const projects = [
     techStack: ["React.js", "Tailwind CSS", "Gemini API", "Pinecone", "RAG", "LangChain"],
     links: {
       github: "https://github.com/yashkotave/nyaysaathi",
-      live: "",
-      demo: "",
+      live: "https://nyay-saathi.vercel.app/",
+      demo: "https://nyay-saathi.vercel.app/",
     },
     featured: true,
     category: "ai",
@@ -145,8 +145,8 @@ export const projects = [
     techStack: ["React.js", "Node.js", "Express.js", "MongoDB", "Socket.io", "Google Maps API"],
     links: {
       github: "https://github.com/yashkotave/goride",
-      live: "",
-      demo: "",
+      live: "https://go-ride-nu.vercel.app/",
+      demo: "https://go-ride-nu.vercel.app/",
     },
     featured: false,
     category: "realtime",
@@ -192,8 +192,8 @@ export const projects = [
     techStack: ["Node.js", "Express.js", "MongoDB", "EJS", "Tailwind CSS"],
     links: {
       github: "https://github.com/yashkotave/vistastay",
-      live: "",
-      demo: "",
+      live: "https://vistastay-3rtnr.ondigitalocean.app/listings",
+      demo: "https://vistastay-3rtnr.ondigitalocean.app/listings",
     },
     featured: false,
     category: "fullstack",
@@ -217,7 +217,7 @@ export const projects = [
     links: {
       github: "https://github.com/yashkotave/ektask",
       live: "https://ektask.vercel.app/",
-      demo: "",
+      demo: "https://ektask.vercel.app/",
     },
     featured: false,
     category: "fullstack",
@@ -262,16 +262,15 @@ export const education = [
   {
     id: 1,
     degree: "B.Tech — Computer Science & Engineering",
-    institution: "Your University Name",
+    institution: "Lakshmi Narain College of Technology Excellence, Bhopal",
     location: "Bhopal, India",
-    startDate: "2022-08",
-    endDate: "2026-05",
-    duration: "20XX – 20XX",
-    description: "Coursework: DSA, OOP, DBMS, Operating Systems, Computer Networks",
-    longDescription: `Pursuing a B.Tech in Computer Science & Engineering with a focus on software development
-      and computer fundamentals. Completed coursework includes Data Structures & Algorithms, Object-Oriented Programming,
-      Database Management Systems, Operating Systems, and Computer Networks.`,
-    cgpa: "8.5",
+    startDate: "2023",
+    endDate: "2027",
+    duration: "2023 – 2027",
+    description: "B.Tech in CSE with focus on software engineering, system design, and AI-enabled applications.",
+    longDescription: `Pursuing a B.Tech in Computer Science & Engineering at LNCT Excellence.
+      Coursework covers core computing disciplines, modern web development, and AI/ML fundamentals.`,
+    cgpa: "8.4",
     achievements: [
       "Participated in coding competitions",
       "Active member of coding club",
@@ -327,9 +326,9 @@ export const services = [
     id: 6,
     icon: "FiCpu",
     title: "AI-Integrated Apps",
-    description: "Apps powered by RAG, LangChain, Gemini API.",
-    longDescription: `I integrate artificial intelligence into web applications using modern AI technologies
-      like RAG (Retrieval-Augmented Generation), LangChain, and Google's Gemini API.`,
+    description: "Gen AI and agentic AI solutions with RAG, LangChain, Gemini API.",
+    longDescription: `I integrate next-generation AI into web applications using Gen AI and agentic AI workflows.
+      My work combines RAG, LangChain, and Gemini API to deliver intelligent automation and adaptive user experiences.`,
   },
 ]
 

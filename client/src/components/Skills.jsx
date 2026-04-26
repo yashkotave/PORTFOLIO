@@ -4,7 +4,30 @@ import gsap from 'gsap'
 import { useEffect, useRef } from 'react'
 
 export default function Skills() {
-  const skillCategories = Object.entries(skills)
+  const skillGroups = [
+    {
+      title: 'Full-Stack Development',
+      categories: [
+        { label: 'Languages', items: skills.languages },
+        { label: 'Frontend', items: skills.frontend },
+        { label: 'Backend', items: skills.backend },
+        { label: 'Databases', items: skills.databases }
+      ]
+    },
+    {
+      title: 'AI & Tools',
+      categories: [
+        { label: 'AI / ML', items: skills.ai },
+        { label: 'Tools', items: skills.tools }
+      ]
+    },
+    {
+      title: 'Foundations',
+      categories: [
+        { label: 'Core Concepts', items: skills.core } ]
+    }
+  ]
+
   const skillRefs = useRef([])
 
   useEffect(() => {
@@ -80,47 +103,48 @@ export default function Skills() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: '-100px' }}
-        className="space-y-14"
+        className="grid gap-6 xl:grid-cols-3"
       >
-        {skillCategories.map(([category, items], idx) => (
+        {skillGroups.map((group, idx) => (
           <motion.div
-            key={category}
+            key={group.title}
             variants={categoryVariants}
-            className="space-y-4"
+            className="bg-[#111117] border border-[rgba(99,102,241,0.12)] rounded-3xl p-6 shadow-xl shadow-[#0f172a]/40"
           >
             <motion.h3
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: -10 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.1, duration: 0.6 }}
               viewport={{ once: true }}
-              className="text-lg sm:text-xl font-semibold text-transparent bg-gradient-to-r from-[#6366f1] to-[#a855f7] bg-clip-text capitalize"
+              className="text-xl font-semibold text-white mb-5"
             >
-              {category.replace(/([A-Z])/g, ' $1').trim()}
+              {group.title}
             </motion.h3>
 
-            <motion.div
-              className="flex flex-wrap gap-2 sm:gap-3"
-              layout="position"
-            >
-              {items.map((skill, i) => (
-                <motion.button
-                  key={skill}
-                  ref={el => {
-                    if (el && !skillRefs.current.includes(el)) {
-                      skillRefs.current.push(el)
-                    }
-                  }}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: idx * 0.1 + i * 0.03, duration: 0.5 }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -2 }}
-                  className="px-3 sm:px-4 py-2 bg-[#111117] border border-[rgba(99,102,241,0.15)] text-[#94a3b8] text-xs sm:text-sm rounded-lg hover:border-[#6366f1]/50 transition-all duration-200 cursor-pointer font-medium shadow-sm hover:shadow-md"
-                >
-                  {skill}
-                </motion.button>
+            <div className="space-y-5">
+              {group.categories.map((category) => (
+                <div key={category.label} className="space-y-3">
+                  <p className="text-sm uppercase tracking-[0.2em] text-[#94a3b8]">
+                    {category.label}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {category.items.map((skill) => (
+                      <button
+                        key={skill}
+                        ref={el => {
+                          if (el && !skillRefs.current.includes(el)) {
+                            skillRefs.current.push(el)
+                          }
+                        }}
+                        className="px-3 py-2 bg-[#0f172a] border border-[rgba(99,102,241,0.12)] text-[#cbd5e1] text-xs sm:text-sm rounded-2xl transition-all duration-200 hover:bg-[#111827] hover:border-[#6366f1]/40"
+                      >
+                        {skill}
+                      </button>
+                    ))}
+                  </div>
+                </div>
               ))}
-            </motion.div>
+            </div>
           </motion.div>
         ))}
       </motion.div>
