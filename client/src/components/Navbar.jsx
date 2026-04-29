@@ -38,7 +38,7 @@ export default function Navbar() {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: 'power3.out' }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
       className={`fixed top-0 w-full z-50 transition-all duration-400 ${
         scrolled
           ? 'bg-[#030712]/95 backdrop-blur-xl border-b border-[rgba(59,130,246,0.1)] shadow-lg'
@@ -62,7 +62,7 @@ export default function Navbar() {
               key={item}
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.08, duration: 0.5, ease: 'power2.out' }}
+              transition={{ delay: i * 0.08, duration: 0.5, ease: 'easeOut' }}
               variants={navItemVariants}
               whileHover="whileHover"
             >

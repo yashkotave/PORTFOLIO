@@ -129,12 +129,12 @@ export default function Hero() {
       {/* Enhanced gradient backgrounds with professional colors */}
       <div
         ref={bgRef}
-        className="absolute w-96 h-96 bg-gradient-to-tr from-[#3b82f6]/20 to-[#8b5cf6]/15 rounded-full blur-3xl -z-10 top-1/4 left-1/2 -translate-x-1/2"
+        className="absolute w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-gradient-to-tr from-[#3b82f6]/20 to-[#8b5cf6]/15 rounded-full blur-2xl sm:blur-3xl -z-10 top-1/4 left-1/2 -translate-x-1/2"
       ></div>
 
       <div
         ref={secondBgRef}
-        className="absolute w-80 h-80 bg-gradient-to-br from-[#06b6d4]/20 to-[#3b82f6]/15 rounded-full blur-3xl -z-10 top-1/2 right-0"
+        className="absolute w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 bg-gradient-to-br from-[#06b6d4]/20 to-[#3b82f6]/15 rounded-full blur-2xl sm:blur-3xl -z-10 top-1/2 right-0"
       ></div>
 
       {floatingSkills.map((skill, idx) => (
@@ -149,7 +149,7 @@ export default function Hero() {
             top: skill.top,
             left: skill.left
           }}
-          className="absolute z-10 text-[14px] sm:text-lg tracking-[0.1em] text-white/60 font-medium cursor-pointer hover:text-[#3b82f6] transition-colors duration-300"
+          className="hidden md:block absolute z-10 text-[14px] sm:text-lg tracking-[0.1em] text-white/60 font-medium cursor-pointer hover:text-[#3b82f6] transition-colors duration-300"
         >
           {skill.label}
         </motion.span>
@@ -163,9 +163,9 @@ export default function Hero() {
       >
         <motion.h1
           variants={itemVariants}
-          className="text-5xl sm:text-6xl md:text-7xl font-bold text-[#f8fafc] mb-6 tracking-tight"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#f8fafc] mb-6 tracking-tight leading-tight"
         >
-          <span className="inline-flex items-center whitespace-nowrap">
+          <span className="inline-flex items-center break-words">
             {typedName}
             {typedName && (
               <span className="inline-block w-1 h-[1.1em] bg-[#60a5fa] ml-2 rounded animate-pulse" />
@@ -175,9 +175,9 @@ export default function Hero() {
 
         <motion.p
           variants={itemVariants}
-          className="text-lg sm:text-xl md:text-2xl text-[#cbd5e1] mb-4 font-semibold"
+          className="text-base sm:text-lg md:text-xl text-[#cbd5e1] mb-4 font-semibold leading-snug break-words"
         >
-          <span className="inline-flex items-center whitespace-nowrap">
+          <span className="inline-flex items-center break-words">
             {typedTitle}
             {typedTitle && (
               <span className="inline-block w-1 h-[1.1em] bg-[#60a5fa] ml-2 rounded animate-pulse" />
@@ -187,7 +187,7 @@ export default function Hero() {
 
         <motion.p
           variants={itemVariants}
-          className="text-base sm:text-lg md:text-lg text-[#cbd5e1] max-w-2xl mx-auto mb-12 leading-relaxed"
+          className="text-sm sm:text-base md:text-lg lg:text-xl text-[#cbd5e1] max-w-lg sm:max-w-xl md:max-w-2xl mx-auto mb-12 leading-relaxed"
         >
           {personalInfo.tagline}
         </motion.p>
@@ -219,7 +219,7 @@ export default function Hero() {
 
         <motion.div
           variants={itemVariants}
-          className="flex gap-4 justify-center items-center mb-6 text-2xl sm:text-3xl text-[#94a3b8]"
+          className="flex gap-4 justify-center items-center mb-6 text-xl sm:text-2xl md:text-3xl text-[#94a3b8]"
         >
           <motion.a
             href={`mailto:${personalInfo.email}`}
@@ -266,7 +266,7 @@ export default function Hero() {
         <motion.div
           animate={{ y: [0, 12, 0] }}
           transition={{ duration: 2.5, repeat: Infinity }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[#6366f1]"
+          className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 text-[#6366f1]"
         >
           <FiArrowDown size={24} />
         </motion.div>
