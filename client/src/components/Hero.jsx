@@ -163,9 +163,9 @@ export default function Hero() {
       >
         <motion.h1
           variants={itemVariants}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#f8fafc] mb-6 tracking-tight leading-tight"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#f8fafc] mb-6 tracking-tight leading-[1.05] sm:leading-tight whitespace-normal break-words"
         >
-          <span className="inline-flex items-center break-words">
+          <span className="inline-flex items-center whitespace-normal lg:whitespace-nowrap break-words">
             {typedName}
             {typedName && (
               <span className="inline-block w-1 h-[1.1em] bg-[#60a5fa] ml-2 rounded animate-pulse" />
@@ -175,9 +175,9 @@ export default function Hero() {
 
         <motion.p
           variants={itemVariants}
-          className="text-base sm:text-lg md:text-xl text-[#cbd5e1] mb-4 font-semibold leading-snug break-words"
+          className="text-base sm:text-lg md:text-xl text-[#cbd5e1] mb-4 font-semibold leading-snug whitespace-normal break-words"
         >
-          <span className="inline-flex items-center break-words">
+          <span className="inline-flex items-center whitespace-normal lg:whitespace-nowrap break-words">
             {typedTitle}
             {typedTitle && (
               <span className="inline-block w-1 h-[1.1em] bg-[#60a5fa] ml-2 rounded animate-pulse" />

@@ -26,7 +26,7 @@ export const personalInfo = {
   location: "Bhopal, India",
   email: "yashkotave1007@gmail.com",
   phone: "+91 9165324126",
-  resumeUrl: "https://drive.google.com/file/d/1Gtij2xW0tOLzk04gJYooqbtse1cDdWVb/view?usp=drivesdk",
+  resumeUrl: "https://drive.google.com/file/d/18y4935JWoGxHv8wjR10-CruuccWkvV2l/view?usp=sharing",
 
   // Social Media Links
   socials: {
@@ -152,6 +152,26 @@ export const projects = [
     category: "realtime",
     startDate: "2024-01",
     endDate: "2024-02",
+    status: "completed",
+  },
+
+  {
+    id: 8,
+    title: "MotionLink",
+    subtitle: "Real-Time Location Tracker",
+    description: `Real-time multi-user location tracking with live GPS coordinate updates on an interactive map.`,
+    longDescription: `MotionLink is a real-time multi-user location tracking web application that displays live GPS coordinates of connected users on an interactive map. Multiple users can open the app simultaneously and see each other's locations update in real time. It includes high accuracy browser geolocation, unique live user markers, automatic marker removal on disconnect, and a responsive full-screen map interface using OpenStreetMap tiles.`,
+    imageUrl: "/projects/motionlink.jpg",
+    techStack: ["Node.js", "Express.js", "Socket.io", "HTML", "CSS", "JavaScript", "Leaflet.js", "OpenStreetMap"],
+    links: {
+      github: "https://github.com/yashkotave/MotionLink",
+      live: "https://motionlink.onrender.com",
+      demo: "https://motionlink.onrender.com",
+    },
+    featured: false,
+    category: "realtime",
+    startDate: "2024-04",
+    endDate: "2024-05",
     status: "completed",
   },
 
