@@ -2,7 +2,7 @@
 
 A production-ready, fully responsive portfolio showcasing Full Stack Development skills. Built with the MERN stack (MongoDB, Express, React, Node.js) with a dark minimal professional theme.
 
-**Live:** [Coming Soon]  
+**Live:** https://yashkotaveportfolio.vercel.app/  
 **GitHub:** https://github.com/yashkotave/PORTFOLIO
 
 ---
@@ -132,7 +132,31 @@ Visit `http://localhost:5173`
 
 ---
 
-## Content Management
+## Featured Projects
+
+### 1. **DevSync AI Workspace** — Agile Project Management Platform
+- **Tech:** MongoDB, Express.js, React.js, Node.js, Tailwind CSS, Framer Motion, Google Gemini API
+- **Features:** AI-powered sprint automation, complexity scoring engine, RBAC with JWT, zero-dependency Kanban UI
+- **Links:** [GitHub](https://github.com/yashkotave/DevSync-AI-Workspace) | [Live Demo](https://dev-sync-ai-workspace.vercel.app/)
+
+### 2. **Aggrizzone** — E-Commerce for Agriculture
+- **Tech:** MERN Stack, Razorpay, Cloudinary
+- **Features:** JWT auth, shopping cart, payment gateway, admin dashboard
+- **Links:** [GitHub](https://github.com/yashkotave/aggrizzone)
+
+### 3. **NyaySaathi** — AI Legal Assistant (RAG-based)
+- **Tech:** React.js, Gemini API, Pinecone, LangChain
+- **Features:** Context-aware legal responses using RAG
+- **Links:** [GitHub](https://github.com/yashkotave/nyaysaathi) | [Live](https://nyay-saathi.vercel.app/)
+
+### 4. **GoRide** — Real-Time Cab Booking App
+- **Tech:** MERN Stack, Socket.io, Google Maps API
+- **Features:** Live driver tracking, dynamic fare calculation, real-time communication
+- **Links:** [GitHub](https://github.com/yashkotave/goride) | [Live](https://go-ride-nu.vercel.app/)
+
+**Full project list in [data.js](client/src/config/data.js)**
+
+---
 
 All content is centralized in **`client/src/config/data.js`**. Future edits require **zero code changes** — just update this file:
 
@@ -155,11 +179,11 @@ All content is centralized in **`client/src/config/data.js`**. Future edits requ
 
 ## TODO (Future)
 
-- [ ] Add Nodemailer email notifications (update server/.env + routes/contact.js)
-- [ ] Add real project thumbnails (replace placeholders)
-- [ ] Add testimonials (update data.js)
-- [ ] Add blog posts (update data.js)
-- [ ] Custom domain setup
+- [ ] Add project thumbnails to `/client/public/projects/` folder
+- [ ] Add email notifications via Nodemailer
+- [ ] Expand testimonials section
+- [ ] Add blog posts and articles
+- [ ] Custom domain integration
 
 ---
 
