@@ -245,6 +245,31 @@ export const projects = [
     endDate: "2024-01",
     status: "completed",
   },
+
+  {
+    id: 9,
+    title: "DevSync AI Workspace",
+    subtitle: "Agile Project Management Platform",
+    description: `AI-powered Agile workspace with automatic sprint decomposition,
+      complexity scoring engine, RBAC controls, and zero-dependency Kanban UI.`,
+    longDescription: `DevSync AI Workspace is a comprehensive Agile project management platform powered by AI.
+      Features include AI-powered sprint automation using Google Gemini API to deconstruct complex task descriptions
+      into 3-step technical roadmaps, an algorithmic estimation engine that assigns context-driven Task Complexity Scores (1–10),
+      robust Role-Based Access Control (RBAC) with JWT verification for multi-tenant privacy, and a high-performance
+      zero-dependency Kanban board with smooth layout transitions and optimized state machines.`,
+    imageUrl: "/projects/devsync-ai.jpg",
+    techStack: ["MongoDB", "Express.js", "React.js", "Node.js", "Tailwind CSS", "Framer Motion", "Google Gemini API", "JWT", "REST APIs"],
+    links: {
+      github: "https://github.com/yashkotave/DevSync-AI-Workspace",
+      live: "https://dev-sync-ai-workspace.vercel.app/",
+      demo: "https://dev-sync-ai-workspace.vercel.app/",
+    },
+    featured: true,
+    category: "ai",
+    startDate: "2024-04",
+    endDate: "2024-06",
+    status: "completed",
+  },
 ]
 
 // ============================================================================
