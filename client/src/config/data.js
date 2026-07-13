@@ -121,8 +121,8 @@ export const projects = [
     techStack: ["React.js", "Tailwind CSS", "Gemini API", "Pinecone", "RAG", "LangChain"],
     links: {
       github: "https://github.com/yashkotave/nyaysaathi",
-      live: "https://nyay-saathi.vercel.app/",
-      demo: "https://nyay-saathi.vercel.app/",
+      live: "https://nyay-saathi-ai-legal-companion-eight.vercel.app/",
+      demo: "https://nyay-saathi-ai-legal-companion-eight.vercel.app/",
     },
     featured: true,
     category: "ai",
@@ -145,8 +145,8 @@ export const projects = [
     techStack: ["React.js", "Node.js", "Express.js", "MongoDB", "Socket.io", "Google Maps API"],
     links: {
       github: "https://github.com/yashkotave/goride",
-      live: "https://go-ride-nu.vercel.app/",
-      demo: "https://go-ride-nu.vercel.app/",
+      live: "https://go-ride-kappa.vercel.app/",
+      demo: "https://go-ride-kappa.vercel.app/",
     },
     featured: false,
     category: "realtime",
